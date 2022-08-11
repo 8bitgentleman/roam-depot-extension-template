@@ -25,7 +25,7 @@ const panelConfig = {
   ]
 };
 
-await function onload({extensionAPI}) {
+async function onload({extensionAPI}) {
   // set defaults if they dont' exist
   if (!extensionAPI.settings.get('data')) {
       await extensionAPI.settings.set('data', "01");
