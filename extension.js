@@ -25,6 +25,11 @@ const panelConfig = {
   ]
 };
 
+// store observers globally so they can be disconnected 
+var runners = {
+  observers: [],
+}
+
 async function onload({extensionAPI}) {
   // set defaults if they dont' exist
   if (!extensionAPI.settings.get('data')) {
@@ -36,6 +41,12 @@ async function onload({extensionAPI}) {
 }
 
 function onunload() {
+  // loop through observers and disconnect
+  for (let index = 0; index < runners['observers'].length; index++) {
+    const element = runners['observers'][index];
+    element.disconnect()
+}
+
   console.log("unload example plugin");
 }
 
