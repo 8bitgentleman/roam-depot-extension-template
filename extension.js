@@ -42,10 +42,10 @@ async function onload({extensionAPI}) {
 
 function onunload() {
   // loop through observers and disconnect
-  for (let index = 0; index < runners['observers'].length; index++) {
-    const element = runners['observers'][index];
-    element.disconnect()
-}
+  runners['observers'].forEach(observer => {
+    observer.disconnect();
+    // perform additional actions for each observer here
+  });
 
   console.log("unload example plugin");
 }
