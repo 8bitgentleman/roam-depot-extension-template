@@ -25,11 +25,13 @@ const panelConfig = {
   ]
 };
 
+async function getDataInfo(extensionAPI) {
+  // only sets defaults if they dont' exist
+  return await extensionAPI.settings.get('data') || "01"
+}
+
 async function onload({extensionAPI}) {
-  // set defaults if they dont' exist
-  if (!extensionAPI.settings.get('data')) {
-      await extensionAPI.settings.set('data', "01");
-  }
+  
   extensionAPI.settings.panel.create(panelConfig);
 
   console.log("load example plugin");
