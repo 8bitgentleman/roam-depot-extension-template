@@ -1,5 +1,7 @@
+import pkg from './package.json';
+
 const panelConfig = {
-  tabTitle: "Test Ext 1",
+  tabTitle: pkg.name,
   settings: [
       {id:          "button-setting",
        name:        "Button test",
@@ -26,20 +28,20 @@ const panelConfig = {
 };
 
 async function onload({extensionAPI}) {
-  // set defaults if they dont' exist
+  // set defaults if they don't exist
   if (!extensionAPI.settings.get('data')) {
       await extensionAPI.settings.set('data', "01");
   }
   extensionAPI.settings.panel.create(panelConfig);
 
-  console.log("load example plugin");
+  console.log(`${pkg.name} version ${pkg.version} loaded`);
 }
 
 function onunload() {
-  console.log("unload example plugin");
+  console.log(`${pkg.name} version ${pkg.version} unloaded`);
 }
 
 export default {
-onload,
-onunload
+  onload,
+  onunload
 };

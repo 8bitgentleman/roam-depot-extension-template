@@ -1,11 +1,14 @@
 {
-  "name": "roam-depot-",
+  "name": "roam-depot-example",
   "version": "1.0.0",
-  "description": "Roam Research Plugin",
+  "description": "Roam Research Plugin Example",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "version:major": "npm version major",
+    "version:minor": "npm version minor",
+    "version:patch": "npm version patch"
   },
   "license": "MIT",
   "author": "Matt Vogel",
